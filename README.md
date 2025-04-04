@@ -32,7 +32,6 @@ CREATE TABLE users (
     balance DECIMAL(10,2) DEFAULT 0.00
 );
 
--- Make sure user names are unique too
 ALTER TABLE users ADD CONSTRAINT unique_name UNIQUE(name);
 
 -- TRANSACTIONS TABLE
@@ -45,6 +44,7 @@ CREATE TABLE transactions (
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
 SELECT 
     t.timestamp,
     t.type,
