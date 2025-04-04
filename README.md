@@ -21,10 +21,14 @@ A fully functional ATM interface built using Java and MySQL. This command-line a
 # Create the MySQL Database
 Login to MySQL and run:
 
+# Create databse
 CREATE DATABASE ATMINTERFACE;
+
+# Use database
 USE ATMINTERFACE;
 
--- USERS TABLE
+# USERS TABLE
+
 CREATE TABLE users (
     user_id VARCHAR(50) PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -34,7 +38,8 @@ CREATE TABLE users (
 
 ALTER TABLE users ADD CONSTRAINT unique_name UNIQUE(name);
 
--- TRANSACTIONS TABLE
+# TRANSACTIONS TABLE
+
 CREATE TABLE transactions (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id VARCHAR(50),
@@ -56,9 +61,9 @@ SELECT
 FROM 
     transactions t
 LEFT JOIN 
-    users r ON t.recipient = r.user_id   -- join for recipient name
+    users r ON t.recipient = r.user_id   
 LEFT JOIN 
-    users s ON t.user_id = s.user_id     -- join for sender name
+    users s ON t.user_id = s.user_id    
 ORDER BY 
     t.timestamp DESC;
 
